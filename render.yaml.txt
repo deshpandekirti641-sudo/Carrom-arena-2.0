@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: carrom-arena
+    env: node
+    plan: starter
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 18.17.0
+      - key: NPM_CONFIG_PRODUCTION
+        value: false
+      - key: NODE_ENV
+        value: production
+      - key: BUILD_PATH
+        value: .next
+    healthCheckPath: /api/health
+    previewsEnabled: false
+    rootDir: .
+    runtime: node
