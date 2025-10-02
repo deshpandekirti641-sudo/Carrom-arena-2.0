@@ -1,0 +1,51 @@
+import type { Metadata } from "next";
+import localFont from "next/font/local";
+import "./globals.css";
+import { ResponseLogger } from "@/components/response-logger";
+import { cookies } from "next/headers";
+import FarcasterWrapper from "@/components/FarcasterWrapper";
+
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  weight: "100 900",
+});
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
+});
+
+export default async function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const cookieStore = await cookies();
+  const requestId = cookieStore.get("x-request-id")?.value;
+
+  return (
+        <html lang="en">
+          <head>
+            {requestId && <meta name="x-request-id" content={requestId} />}
+          </head>
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+            
+      <FarcasterWrapper>
+        {children}
+      </FarcasterWrapper>
+      
+            <ResponseLogger />
+          </body>
+        </html>
+      );
+}
+
+export const metadata: Metadata = {
+        title: "Carrom Cash Arena",
+        description: "Join Carrom Cash Arena for exciting 1v1 matches. Secure login, easy deposit/withdrawal via UPI/net banking, and automated payouts. Enjoy real-time gaming, exclusively for Indian users!",
+        other: { "fc:frame": JSON.stringify({"version":"next","imageUrl":"https://usdozf7pplhxfvrl.public.blob.vercel-storage.com/thumbnail_8c917b03-c192-42be-9c32-b4eda1ee6d57-MkxSCdhB5qNN2kTG7ju2IHblVUtRLA","button":{"title":"Open with Ohara","action":{"type":"launch_frame","name":"Carrom Cash Arena","url":"https://all-explore-200.app.ohara.ai","splashImageUrl":"https://usdozf7pplhxfvrl.public.blob.vercel-storage.com/farcaster/splash_images/splash_image1.svg","splashBackgroundColor":"#ffffff"}}}
+        ) }
+    };
