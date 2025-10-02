@@ -1,0 +1,27 @@
+{
+  "accountAssociation": {
+    "header": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+    "payload": "eyJzdWIiOiJjYXJyb20tYXJlbmEiLCJpYXQiOjE3MDAwMDAwMDAsImV4cCI6MTczMTUzNjAwMH0",
+    "signature": "carrom-arena-signature"
+  },
+  "baseBuilder": {
+    "name": "Carrom Arena",
+    "description": "Real money earning Carrom gaming platform",
+    "version": "1.0.0",
+    "icon": "/favicon.ico"
+  },
+  "frame": {
+    "version": "next",
+    "imageUrl": "/api/og",
+    "button": {
+      "title": "Play Carrom",
+      "action": {
+        "type": "launch_frame",
+        "name": "carrom-arena",
+        "url": "/",
+        "splashImageUrl": "/favicon.ico",
+        "splashBackgroundColor": "#1a1a1a"
+      }
+    }
+  }
+}
