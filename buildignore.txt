@@ -1,0 +1,24 @@
+# Build ignore patterns
+*.md
+.git*
+.env*
+.vscode/
+.idea/
+*.log
+coverage/
+.nyc_output/
+docs/
+examples/
+test/
+tests/
+spec/
+__tests__/
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+.eslintrc*
+.prettierrc*
+jest.config.*
+cypress/
+.cypress/
